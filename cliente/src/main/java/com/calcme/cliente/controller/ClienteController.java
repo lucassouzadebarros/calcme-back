@@ -1,7 +1,6 @@
 package com.calcme.cliente.controller;
 
 import java.util.List;
-import java.util.concurrent.ExecutionException;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -13,36 +12,37 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.calcme.cliente.service.UserService;
+import com.calcme.cliente.service.ClienteService;
 import com.calcme.cliente.model.*;
 
 @CrossOrigin("localhost:4200")
 @RestController
-@RequestMapping(value = "/user")
-public class UserController {
+@RequestMapping(value = "/cliente")
+public class ClienteController {
 	
 	@Autowired
-    private UserService userService;	
+    private ClienteService userService;
 	
 	
 	@DeleteMapping(value = "{id}")
-	public void delete(@PathVariable Integer id) {		
+	public void delete(@PathVariable String id) {
 		userService.delete(id);
 		
 	}
 	
 	@GetMapping
-	public List<User> list(){
+	public List<Cliente> list(){
 		 return userService.list();
 	}	
 	
 	@PostMapping
-	public  User save(@RequestBody User user){
-	 return userService.save(user);
+	public Cliente save(@RequestBody Cliente cliente){
+
+	 return userService.save(cliente);
 	}
 	
 	@GetMapping(value = "{id}")
-	public User search(@PathVariable Integer id) {
+	public Cliente search(@PathVariable String id) {
 		return userService.search(id);
 	}
 

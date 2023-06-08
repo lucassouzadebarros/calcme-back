@@ -7,13 +7,15 @@ import lombok.Data;
 
 @Document
 @Data
-public class User {	
+public class Cliente {
 	
 	@Id
-    private Integer id;
+    private String id;
     
-    private String name;
+    private String nome;
     
     private String telefone;
+
+    private String email;
 
 }
